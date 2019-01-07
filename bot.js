@@ -17,7 +17,29 @@ client.on('message', message => {
   	}
 });
 
-
+lient.on('message', msg => {
+  if(msg.content === '-hide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: false,
+        READ_MESSAGES: false
+      })
+    })
+    msg.channel.send('.')
+  }
+})
+كود اظهار الشات
+client.on('message', msg => {
+  if(msg.content === '-show') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: true,
+        READ_MESSAGES: true
+      })
+    })
+    msg.channel.send('.')
+  }
+})
 
  
 client.on("message", async message => {
