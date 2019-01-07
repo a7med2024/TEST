@@ -42,7 +42,7 @@ client.on('message', msg => {
 })
 
 client.on('message', message => {
-  if (message.content.startsWith("-readyserver")) {
+  if (message.content.startsWith("-rd")) {
    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
    message.guild.createRole({
 name: 'King',
@@ -91,7 +91,7 @@ message.channel.send('**Roles Was Succsesfluy Created**')
   }
 });
 client.on('message', message => {
-  if (message.content.startsWith("-readyserver")) {
+  if (message.content.startsWith("-rd")) {
   if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
           if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`${message.author.username} You Dont Have ``MANAGE_CHANNELS`` **Premission**`);
    message.guild.createChannel('rules', 'text')
@@ -111,7 +111,7 @@ message.channel.sendMessage('**Channels Was Succsesfluy Created**')
 });
  
 client.on('message', message => {
-  if (message.content.startsWith("-readyserver")) {
+  if (message.content.startsWith("-rd")) {
   if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
           if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
 message.guild.createChannel('╔╣MUSIC╠╗', 'voice')
