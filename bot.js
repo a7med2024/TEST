@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '-'//your prefix
+const devs = ["514041065041297421"] 
+const adminprefix = "-";//Narox
 
 client.on('ready', () => {
     console.log('I am ready!');
@@ -13,46 +15,54 @@ client.on('message', message => {
 });
 
 
-client.on('message', message => {//Toxic Codes
-    if (!message.content.startsWith(prefix)) return;//Toxic Codes
-  if(!message.channel.guild) return message.reply(' This command only for servers ')//Toxic Codes
-    let command = message.content.split(" ")[0];//Toxic Codes
-    command = command.slice(prefix.length);//Toxic Codes
-    if (command === "kill"){//Toxic Codes
-
-   var sabotage = message.mentions.users.first();
-   if(sabotage == message.author)return message.reply(**الانتحار مو زين و الله**);
-    if(sabotage === client.user) return message.reply(** تبي تقتلني ؟ **);
-  if (sabotage < 1) {
-    message.delete();
-    return message.channel.sendMessage('ضع شيئا للقتل، مثل ذكر مستخدم، أو استخدام رمز تعبيري');
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!devs.includes(message.author.id)) return;
+     
+  if (message.content.startsWith(adminprefix + 'pt')) {
+    client.user.setGame(argresult);
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else
+    if (message.content === (adminprefix + "Percie")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'wt')) {// لجعل البوت في حاله الواتشنق
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else
+  if (message.content.startsWith(adminprefix + 'setprefix')) {//لتغير البريفكس
+  client.user.setPrefix(argresult).then
+      message.channel.send(`**Prefix Changed :white_check_mark: ${argresult}** `)
+  } else
+  if (message.content.startsWith(adminprefix + 'ls')) {// لجعل البوت في حاله الاستماع
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else     //Narox
+    if (message.content.startsWith(adminprefix + 'setname')) {// لتغير اسم البوت
+  client.user.setUsername(argresult).then
+      message.channel.sendMessage(`**${argresult}** : Done `)
+  return message.reply("**Name Changed :white_check_mark:**");
+  } else
+    if (message.content.startsWith(adminprefix + 'setavatar')) {// لتغير صوره البوت
+  client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+        } else    
+  if (message.content.startsWith(adminprefix + 'st')) {// لعمل ستريمنق للبوت
+    client.user.setGame(argresult, "https://www.twitch.tv/idk");
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
   }
-  if (!sabotage) return message.channel.send(Please Mention A Member to Kill ⚠)
-  message.channel.send("▄︻̷̿┻̿═━一 ${sabotage")
-  .then(msg =>{
-  msg.edit(▄︻̷̿┻̿═━一 ${sabotage} 3⃣);//Toxic Codes
-  setTimeout(function() {//Toxic Codes
-    msg.edit(▄︻̷̿┻̿═━一 ${sabotage} 2⃣);//Toxic Codes
-  }, 1000);//Toxic Codes
-  setTimeout(function() {//Toxic Codes
-    msg.edit(▄︻̷̿┻̿═━一 ${sabotage} 1⃣);
-  }, 2000);
-  setTimeout(function() {
-    msg.edit(▄︻̷̿┻̿═━一 💥);
-  }, 3000);
-  setTimeout(function() {
-    msg.edit(▄︻̷̿┻̿═━一 🔥);
-  }, 4000);
-  setTimeout(function() {
-    msg.edit(▄︻̷̿┻̿═━一 💀);
-  }, 5000);//Toxic Codes
-  msg.delete(6000)//Toxic Codes
-  message.delete()//Toxic Codes
-  })//Toxic Codes
-  message.channel.send("تم اخفاء الجريمة بنجاح :hole: ").then(msg => msg.delete(10000));//Toxic Codes
-    }//Toxic Codes
-});//Toxic Codes//Toxic Codes
-//Toxic Codes
+    if(message.content === adminprefix + "restart") {// لعمل ريسترت للبوت
+      if (!devs.includes(message.author.id)) return;
+          message.channel.send(`:warning:️ **Bot restarting by ${message.author.username}**`);
+        console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        console.log(`⚠️ Bot restarting... ⚠️`);
+        console.log("===============================================\n\n");
+        client.destroy();
+        child_process.fork(__dirname + "/bot.js");
+        console.log(`Bot Successfully Restarted`);
+    }
+ 
+  });
 
 client.on('message', async message => {
     var command = message.content.toLowerCase().split(" ")[0];
