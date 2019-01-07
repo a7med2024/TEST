@@ -12,22 +12,6 @@ client.on('message', message => {
   	}
 });
 
-client.on('message', message => {//Toxic Codes
-    if (message.content.startsWith("-dick")) {//Toxic Codes
-
-     //Toxic Codes//Toxic Codes//Toxic Codes
-
-        let dicksize = ["=", "==", "===", "====", "=====", "======", "=======", "========", "=========", "=========="];//Toxic Codes
-        let dickuser = message.mentions.users.first();//Toxic Codes
-
-        if (!dickuser) {
-            return message.channel.send('You must mention someone!');//Toxic Codes
-        }//Toxic Codes
-
-        message.channel.send(**${dickuser} Size: ** 8${dicksize[~~Math.floor(Math.random() * dicksize.length)]}D\nSized by **${message.author.tag}**);//Toxic Codes
-
-    }//Toxic Codes
-}); //Toxic Codes
 
 client.on('message', message => {//Toxic Codes
     if (!message.content.startsWith(prefix)) return;//Toxic Codes
