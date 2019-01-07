@@ -47,30 +47,23 @@ client.on('message', msg => {
   }
 })
 
-client.on('guildMemberAdd', member => {
-     const welcomer =  member.guild.channels.find('name', 'general');
-    if(!welcomer) return;
-      if(welcomer) {
-         moment.locale('ar-ly');
-         var m = member.user;
-        let yumz = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(m.avatarURL)
-        .setAuthor(m.username,m.avatarURL)
-        .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
-     
-         .setFooter(`${m.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
-     welcomer.send({embed:yumz});          
-              
-                    }  )
-     
-                   
- 
-})
-      });                    
- }
-});
-          
+client.on('guildMemberAdd', Sal => { //By a7med#1231
+    var embed = new Discord.RichEmbed()
+    .setAuthor(Sal.user.username, Sal.user.avatarURL)
+    .setThumbnail(Sal.user.avatarURL)
+    .setImage('https://cdn.discordapp.com/attachments/492862340484694027/493771573740830740/welcome1.png%27) //هنا حط الصوره الي تبيها
+    .setTitle('عضو جديد!')
+    .setDescription('مرحبا بك بالسيرفر')
+    .addField('ايدي العضو:',"" +  Sal.user.id, true)
+    .addField('تاق العضو', Sal.user.discriminator, true)
+    .addField('تم الانشاء في', Sal.user.createdAt, true)
+    .addField(' :bust_in_silhouette:  انت رقم',**[ ${Sal.guild.memberCount} ]**,true)
+    .setColor('RANDOM')
+    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
+    var channel =Sal.guild.channels.find('name', 'general') // هنا حط اسم الروم الي تبيه يكتب فيه
+    if (!channel) return;
+    channel.send({embed : embed});
+    });
           
 client.on('ready', () => {
   wait(1000);
