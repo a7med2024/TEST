@@ -81,9 +81,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!cv <name> / انشاء رووم فويس』
 『!delet <name> / مسح الشات او الرووم فويس』
 『❖!cc1 <number /ينشا لك 50 لون منظم』
-   `,`
- 
-
+  
 **
    
 `]
