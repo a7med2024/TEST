@@ -19,6 +19,39 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', message => {
+    if (message.content === '!help') {
+        let helpEmbed = new Discord.RichEmbed()
+        .setTitle('**برفكس البوت(!)**')
+        .addField('!hide', 'قفل الروم')
+        .addField('!show', 'فتح الروم')
+        .addField('!server', 'معلومات السيرفر')
+        .addField('!new', 'صنع تذكره')
+	.addField('!clear', 'حذف الشات')
+        .addField('رابط', 'انشاء رابط دعوه')
+	.addField('!Kick', 'اعطاء كيك')
+	.addField('!Ban', ' اعطاء باند')
+	.addField('!Mute', 'اعطاء ميوت')
+	.addField('!unmute', 'فك ميوت')
+	message.channel.send(helpEmbed);
+    }
+});
+
+client.on('message', message => {
+    if (message.content === '!help') {
+        let helpEmbed = new Discord.RichEmbed()
+	.addField('!role', 'اعطاء رتبه')
+	.addField('!move', 'سحب عضو')  
+	.addField('!setWelcomer', 'تفعيل روم الترحيب')  
+	.addField('!toggleInvitedby', 'تفعيل تم تعدوتك من قبل')
+	.addField('تقديم!', 'لي التقديم على رتبه في السيرفر')
+	.addField('رفض!', 'لي رفض عضو')
+	.addField('قبول!', 'لي قبول عضو')
+	.addField('!room1', 'لي انشاء روم التقديمات')
+	.addField('!room2', 'لي انشاء روم القبول-الرفض')
+	message.channel.send(helpEmbed);
+    }
+});
 
 
 client.on('message', msg => {
