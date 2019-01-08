@@ -37,7 +37,7 @@ client.on('message', message => {
         .addField('!show', 'فتح الروم')
         .addField('!server', 'معلومات السيرفر')
         .addField('!new', 'صنع تذكره')
-	.addField('!clear', 'حذف الشات')
+	.addField('!clr', 'حذف الشات')
         .addField('رابط', 'انشاء رابط دعوه')
 	.addField('!Kick', 'اعطاء كيك')
 	.addField('!Ban', ' اعطاء باند')
