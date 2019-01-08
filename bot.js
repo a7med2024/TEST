@@ -333,7 +333,7 @@ client.on("guildMemberAdd", member => {
         if(member.guild.id === "531965140300464128") { ////////////// Mal , Codes هنا ايدي السيرفر
   const channel = member.guild.channels.find('id', '531965140300464130'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
 if (!channel) return;
-channel.send(`** Welcome To Rulom server:dove:<@${member.user.id}>** `)  
+channel.send(`** Welcome To Friends server:dove:<@${member.user.id}>** `)  
 }});
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","Friends"));
