@@ -19,6 +19,39 @@ client.on('message', message => {
   	}
 });
 
+const welcome = JSON.parse(fs.readFileSync('./welcomer.json' , 'utf8'));
+
+
+client.on('message', message => {
+
+           if (!message.channel.guild) return;
+
+    let room = message.content.split(" ").slice(1);
+    let findroom = message.guild.channels.find('name', `${room}`)
+    if(message.content.startsWith(prefix + "setWelcomer")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+if(!room) return message.channel.send('Please Type The Channel Name')
+if(!findroom) return message.channel.send('Cant Find This Channel')
+let embed = new Discord.RichEmbed()
+.setTitle('**Done The Welcome Code Has Been Setup**')
+.addField('Channel:', `${room}`)
+.addField('Requested By:', `${message.author}`)
+.setThumbnail(message.author.avatarURL)
+.setFooter(`${client.user.username}`)
+message.channel.sendEmbed(embed)
+welcome[message.guild.id] = {
+channel: room,
+onoff: 'On',
+by: 'On',
+dm: 'Off'
+}
+fs.writeFile("./welcomer.json", JSON.stringify(welcome), (err) => {
+if (err) console.error(err)
+})
+    }})
+
+
 client.on('message', message => {
      if (message.content === (prefix + "help")) {
      let embed = new Discord.RichEmbed()
