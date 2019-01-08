@@ -19,23 +19,31 @@ client.on('message', message => {
   	}
 });
 
-client.on('guildMemberAdd', Sal => { //By Joker#3358
-    var embed = new Discord.RichEmbed()
-    .setAuthor(Sal.user.username, Sal.user.avatarURL)
-    .setThumbnail(Sal.user.avatarURL)
-    .setImage('http://live-timely-4jepdssgmc.time.ly/wp-content/uploads/2018/08/welcomeEvents.jpg') //هنا حط الصوره الي تبيها
-    .setTitle('عضو جديد!')
-    .setDescription('مرحبا بك بالسيرفر')
-    .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
-    .addField('``تاق العضو``', Sal.user.discriminator, true)
-    .addField('``تم الانشاء في``', Sal.user.createdAt, true)
-    .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
-    .setColor('RANDOM')
-    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
-    var channel =Sal.guild.channels.find('【welcome-الترحيب】', 'chat') // هنا حط اسم الروم الي تبيه يكتب فيه
-    if (!channel) return;
-    channel.send({embed : embed});
-    });
+client.on('guildMemberAdd', member => {
+  var embed = new Discord.RichEmbed()
+  .setTitle(" :smiley: عضو جديد دخل السيرفر")
+  .setColor("RANDOM")
+  .addField("اسم العضو",${member})
+  .addField("ايدي العضو",${member.id})
+  .addField("رقم العضو",${member.guild.memberCount})
+  .setThumbnail("http://www.ymcaswkansas.org/sites/ymcaswkansas.org/files/civicrm/friend.png%22)
+  var channel =member.guild.channels.find('name', 'chat')
+if (!channel) return;
+      channel.send({embed : embed});
+});
+
+client.on('guildMemberRemove', member => {
+  var embed = new Discord.RichEmbed()
+  .setTitle("عضو غادر السيرفر")
+  .setColor("RANDOM")
+  .addField("اسم العضو",${member})
+  .addField("ايدي العضو",${member.id})
+  .addField("تبقى",${member.guild.memberCount})
+  .setThumbnail("https://cdn.onlinewebfonts.com/svg/img_948.png%22)
+  var channel =member.guild.channels.find('name', 'chat')
+  if (!channel) return;
+        channel.send({embed : embed});
+  });
 
 client.on("guildMemberAdd", member => {
         if(member.guild.id === "531965140300464128") { ////////////// Mal , Codes هنا ايدي السيرفر
