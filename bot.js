@@ -44,59 +44,33 @@ if (!channel) return;
 channel.send(`** Welcome To Friends server:dove:<@${member.user.id}>** `)  
 }});
 
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("531965140300464128");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        });
-    });
+var anti_spam = require("discord-anti-spam");
+ 
+anti_spam(bot, {
+  warnBuffer: 7,  //MHSTR
+  maxBuffer: 8,  //MHSTR
+  interval: 1000,  //MHSTR
+  warningMessage: "**سيتم طردك إن لم توقف سبام**",  //MHSTR
+  banMessage: "تم الطرد بسبب السبام",  //MHSTR
+  maxDuplicatesWarning: 7, //NAROX
+  maxDuplicatesBan: 10  //NAROX
 });
  
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("531965140300464130");
-    if (!channel) {/Toxic Codes
-        console.log("!the channel id it's not correct");
-        return;
-    }
-    if (member.id == client.user.id) {/Toxic Codes
-        return;
-    }
-    console.log('-');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("531965140300464128");
-    guild.fetchInvites().then((data) => {/Toxic Codes
-        data.forEach((Invite, key, map) => {/Toxic Codes
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {/Toxic Codes
- channel.send(تم دعوته بواسطة  ${Invite.inviter}) ;
- }
-            dat[Inv] = Invite.uses;
-
-       });
-    });
+bot.login(process.env.BOT_SPAM);
+ 
+const bot1 = new Discord.Client();
+ 
+ var anti_spam1 = require("discord-anti-spam");
+anti_spam1(bot1, {
+  warnBuffer: 7,  //@N.C™ » MHSTR#1119  //// حقوق مهستر
+  maxBuffer: 8,  //@N.C™ » MHSTR#1119
+  interval: 1000, //@N.C™ » MHSTR#1119
+  warningMessage: "**سيتم طردك إن لم توقف سبام**",  //NAROX codes
+  banMessage: "تم الطرد بسبب السبام",  //NAROX codes
+  maxDuplicatesWarning: 7,  //NAROX codes
+  maxDuplicatesBan: 10  //MHSTR
 });
 
-client.on('message', message => {
-                                if(!message.channel.guild) return;
-                        if (message.content.startsWith(prefix + "ping")) {
-                            if(!message.channel.guild) return;
-                            var msg = `${Date.now() - message.createdTimestamp}`
-                            var api = `${Math.round(client.ping)}`
-                            if (message.author.bot) return;
-                        let embed = new Discord.RichEmbed()
-                        .setAuthor(message.author.username,message.author.avatarURL)
-                        .setColor('RANDOM')
-                        .addField('**Time Taken:**',msg + " ms 📶 ")
-                        .addField('**WebSocket:**',api + " ms 📶 ")
-         message.channel.send({embed:embed});
-                        }
- });
 
 client.on("ready", async  => {
   setInterval(function(){
