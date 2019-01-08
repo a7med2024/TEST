@@ -19,6 +19,20 @@ client.on('message', message => {
   	}
 });
 
+const ages = [  '1',  '2',  '3',  '4',  '5',  '6',  '7',  '8',  '9',  '10',  '11',  '12',  '13',  '14',  '15',  '16',  '17',  '18',  '19',  '20',  '21',  '22',  '23',  '24',  '25',  '26',  '27',  '28',  '29',  '30',  '31',  '32']
+
+client.on('message', message => {
+  if (message.content.startsWith("عمري")) {
+               if(!message.channel.guild) return message.reply('** This command only for servers**');
+ var embed = new Discord.RichEmbed()
+ .setColor('RANDOM')
+  .setThumbnail(message.author.avatarURL)
+.addField('اتوقع عمرك',`${ages[Math.floor(Math.random() * ages.length)]}`)
+ message.channel.sendEmbed(embed);
+ console.log('[id] Send By: ' + message.author.username)
+   }
+});
+
 client.on('message', msg => {
   if(msg.content === '-hide') {
     msg.guild.channels.forEach(c => {
