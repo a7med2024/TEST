@@ -317,6 +317,17 @@ client.on('message', message => {
     });
 
 client.on('message', message => {
+    if(message.channel.type === 'dm') {
+        var guildID = '531965140300464128'; // <=============== ايدي السيرفر حقك
+        if(message.content.includes('discord.gg/')) {
+            var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
+            member.ban({ reason: 'ADS In Private.' }).catch();
+        }
+    }
+});
+
+
+client.on('message', message => {
 	var prefix = "!";
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
