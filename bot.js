@@ -7,19 +7,15 @@ const fs = require('fs');
 const moment = require('moment');
 const jimp = require('jimp');
 const Canvas = require('canvas');
-const invites = {};
-const wait = require('util').promisify(setTimeout);
-var stopReacord = true;
-var reactionRoles = [];
-var definedReactionRole = null;
+
 
 client.on('ready', () => {
     console.log('I am ready!');
 });
 
 client.on('message', message => {
-    if (message.content === 'ping') {
-    	message.reply('pong');
+    if (message.content === 'السلام عليكم') {
+    	message.reply('وعليكم السلام ورحمه الله وبركاته');
   	}
 });
 
@@ -48,7 +44,12 @@ client.on('message', msg => {
 })
 
 
-        
+  client.on("ready", () => { // TOXIC CODES RAINBO
+  function lol() {// TOXIC CODES RAINBO
+    client.guilds.get('531965140300464128').roles.find("name", ".").setColor("RANDOM");// TOXIC CODES RAINBO
+  };// TOXIC CODES RAINBO
+  setInterval(lol, 1000);// TOXIC CODES RAINBO 
+});// TOXIC CODES RAINBO      
  
  
 client.on("message", async message => {
