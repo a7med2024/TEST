@@ -56,8 +56,6 @@ client.on("ready", () => {
     });
 });
  
- 
- /Toxic Codes
 client.on("guildMemberAdd", (member) => {
     let channel = member.guild.channels.get("531965140300464130");
     if (!channel) {/Toxic Codes
@@ -83,8 +81,6 @@ client.on("guildMemberAdd", (member) => {
        });
     });
 });
-
-
 
 client.on('message', message => {
                                 if(!message.channel.guild) return;
