@@ -331,13 +331,12 @@ client.on("guildMemberAdd", member => {
 }).catch(console.error)
 })
 
-  client.on("ready", () => { // TOXIC CODES RAINBO
-  function lol() {// TOXIC CODES RAINBO
-    client.guilds.get('531965140300464128').roles.find("name", ".").setColor("RANDOM");// TOXIC CODES RAINBO
-  };// TOXIC CODES RAINBO
-  setInterval(lol, 1000);// TOXIC CODES RAINBO 
-});// TOXIC CODES RAINBO      
- 
+ client.on("ready", () => { // كود رينبو
+  function lol() {
+    client.guilds.get('531965140300464128').roles.find("name", ".").setColor("RANDOM");
+  };
+  setInterval(lol, 1000);
+});
  
 client.on("message", async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
