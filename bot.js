@@ -1652,7 +1652,7 @@ client.on('guildMemberAdd', member=> {
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
-  return channel.send(`**Welcome to Friends.₃₃ server.:dove: `) 
+  return channel.send(`**Welcome to Friends.₃₃ server.:dove:**`) 
 }).catch(console.error)
 })
 
