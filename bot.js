@@ -19,6 +19,31 @@ client.on('message', message => {
   	}
 });
 
+client.on('guildMemberAdd', Sal => { //By Joker#3358
+    var embed = new Discord.RichEmbed()
+    .setAuthor(Sal.user.username, Sal.user.avatarURL)
+    .setThumbnail(Sal.user.avatarURL)
+    .setImage('http://live-timely-4jepdssgmc.time.ly/wp-content/uploads/2018/08/welcomeEvents.jpg') //هنا حط الصوره الي تبيها
+    .setTitle('عضو جديد!')
+    .setDescription('مرحبا بك بالسيرفر')
+    .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
+    .addField('``تاق العضو``', Sal.user.discriminator, true)
+    .addField('``تم الانشاء في``', Sal.user.createdAt, true)
+    .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
+    .setColor('RANDOM')
+    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
+    var channel =Sal.guild.channels.find('【welcome-الترحيب】', 'chat') // هنا حط اسم الروم الي تبيه يكتب فيه
+    if (!channel) return;
+    channel.send({embed : embed});
+    });
+
+client.on("guildMemberAdd", member => {
+        if(member.guild.id === "531965140300464128") { ////////////// Mal , Codes هنا ايدي السيرفر
+  const channel = member.guild.channels.find('id', '531965140300464130'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
+if (!channel) return;
+channel.send(`** Welcome To Friends server:dove:<@${member.user.id}>** `)  
+}});
+
 client.on("ready", () => {
     var guild;
     while (!guild)
@@ -1570,12 +1595,6 @@ client.on("message", (message) => {
     }
 });  
 
-client.on("guildMemberAdd", member => {
-        if(member.guild.id === "531965140300464128") { ////////////// Mal , Codes هنا ايدي السيرفر
-  const channel = member.guild.channels.find('id', '531965140300464130'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
-if (!channel) return;
-channel.send(`** Welcome To Friends server:dove:<@${member.user.id}>** `)  
-}});
 
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","Friends"));
