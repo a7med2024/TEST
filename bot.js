@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '!'//your prefix
+const prefix = '!'
 const devs = ["514041065041297421"] 
 const adminprefix = "!";
 const fs = require('fs');
@@ -19,22 +19,10 @@ client.on('message', message => {
   	}
 });
 
-const ages = [  '1',  '2',  '3',  '4',  '5',  '6',  '7',  '8',  '9',  '10',  '11',  '12',  '13',  '14',  '15',  '16',  '17',  '18',  '19',  '20',  '21',  '22',  '23',  '24',  '25',  '26',  '27',  '28',  '29',  '30',  '31',  '32']
 
-client.on('message', message => {
-  if (message.content.startsWith("عمري")) {
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
- var embed = new Discord.RichEmbed()
- .setColor('RANDOM')
-  .setThumbnail(message.author.avatarURL)
-.addField('اتوقع عمرك',`${ages[Math.floor(Math.random() * ages.length)]}`)
- message.channel.sendEmbed(embed);
- console.log('[id] Send By: ' + message.author.username)
-   }
-});
 
 client.on('message', msg => {
-  if(msg.content === '-hide') {
+  if(msg.content === '!hide') {
     msg.guild.channels.forEach(c => {
       c.overwritePermissions(msg.guild.id, {
         SEND_MESSAGES: false,
@@ -46,7 +34,7 @@ client.on('message', msg => {
 })
 
 client.on('message', msg => {
-  if(msg.content === '-show') {
+  if(msg.content === '!show') {
     msg.guild.channels.forEach(c => {
       c.overwritePermissions(msg.guild.id, {
         SEND_MESSAGES: true,
@@ -327,6 +315,44 @@ client.on('message', message => {
      .setColor('#502faf').setAuthor(`${message.author.username}'`, message.author.avatarURL).setDescription('``تم انشاءالالوان``')});
     }
     });
+
+client.on('message', message => {
+            let args = message.content.split(' ').slice(1);
+        if(message.content.startsWith(prefix + 'color')) {
+            const embedd = new Discord.RichEmbed()
+            .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+            .setDescription(**لا يوجد لون بهذا الأسم ** ❌)
+            .setColor(ff0000)
+
+            if(!isNaN(args) && args.length > 0)
+
+
+            if    (!(message.guild.roles.find("name",${args}))) return  message.channel.sendEmbed(embedd);
+
+
+            var a = message.guild.roles.find("name",${args})
+             if(!a)return;
+            const embed = new Discord.RichEmbed()
+
+            .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+            .setDescription(**Done , تم تغير لونك . ✅ **)
+
+            .setColor(${a.hexColor})
+            message.channel.sendEmbed(embed);
+            if (!args)return;
+            setInterval(function(){})
+               let count = 0;
+               let ecount = 0;
+            for(let x = 1; x < 201; x++){
+
+            message.member.removeRole(message.guild.roles.find("name",${x}))
+
+            }
+             message.member.addRole(message.guild.roles.find("name",${args}));
+
+
+            }
+            });
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + 'linkbot')) {
