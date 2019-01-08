@@ -30,39 +30,103 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content === '!help') {
-        let helpEmbed = new Discord.RichEmbed()
-        .setTitle('**برفكس البوت(!)**')
-        .addField('!hide', 'قفل الروم')
-        .addField('!show', 'فتح الروم')
-        .addField('!server', 'معلومات السيرفر')
-        .addField('!new', 'صنع تذكره')
-	.addField('!clr', 'حذف الشات')
-        .addField('رابط', 'انشاء رابط دعوه')
-	.addField('!Kick', 'اعطاء كيك')
-	.addField('!Ban', ' اعطاء باند')
-	.addField('!Mute', 'اعطاء ميوت')
-	.addField('!unmute', 'فك ميوت')
-	message.channel.send(helpEmbed);
-    }
-});
+if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
+    let pages = [`
+***__وصف عن البوت__***
+**
+:gem:  البوت فيه كثير ميزات حلوة و جميلة
+ ا:rocket: البوت يعمل 24 ساعه 
+بوت يمتلك مضد جحفله +سبام+نشر روابط+مضاد سب :gear: 
+**
+        ***__General orders__***
+**
+『!allbots/لعرض جميع البوتات الي بالسيرفر』
+『!server/يعرض لك معلومات عن السيرفر』
+『!bot/يعرض لك كل معلومات البوت』
+『!invites/ يعرض لك  عدد انفايتاتك بالسيرفر 』
+『!invite-codes/يعرض لك روابط الانفايتات حكك في السيرفر 』
+『!tag/يكتب لك الكلمة بشكل جميل وكبير』
+『!w/امر يخليك مثل بوت تكتب عبره مع امر ويسويك بوت』
+『!za5/يزخرف لك كلمة او جملة』
+『!rooms/يعرض لك كل الرومات الي بالسيرفر مع عددها』
+『!roles/يعرض لك كل الرانكات بالسيرفر بشكل جميل』
+『!emojilist/يعرض لك كل الايموجيات الي بالسيرفر』
+『say/يكرر الكلام الي تكتبو』
+『!image/صورة السيرفر』
+『!bans / عدد الاشخاص المبندة 』
+『!avatar/صورتك او صورة الي تمنشنو』
+『!support/سيرفر الدعم』
+**
+  `
+,`
+        ***__Administrative Orders__***
+**
+『!move @user /  لسحب الشخص الى روومك』
+『!bc / رسالة جماعية الى كل اعضاء السيرفر』
+『!role @user <rank> / لأعطاء رتبة لعضو معين』
+『!roleremove @user <rank> / لازالة الرتبة من شخص معين』
+『!role all <rank> / لأعطاء رتبة للجميع』
+『!role humans <rank> / لأعطاء رتبة للاشخاص فقط』
+『!role bots <rank> / لأعطاء رتبة لجميع البوتات』
+『!clr <numbr> / مسح الشات بعدد』
+『!clear / مسح الشات』
+『!mute @user <reason> / اعطاء العضو ميوت لازم رتبة <Muted>』
+『!unmute @user / لفك الميوت عن الشخص 』
+『!kick @user <reason> / طرد الشخص من السيرفر』
+『!ban @user <reason> / حضر الشخص من السيرفر』
+『!dc / مسح كل الرومات』
+『!dr / <مسح كل الرانكات <لازم تكون رانك البوت فوق كل الرانكات』
+『!ct <name> / انشاء شات』
+『!cv <name> / انشاء رووم فويس』
+『!delet <name> / مسح الشات او الرووم فويس』
+『❖!cc1 <number /ينشا لك 50 لون منظم』
+   `,`
+ 
 
-client.on('message', message => {
-    if (message.content === '!help') {
-        let helpEmbed = new Discord.RichEmbed()
-	.addField('!role', 'اعطاء رتبه')
-	.addField('!move', 'سحب عضو')  
-	.addField('!setWelcomer', 'تفعيل روم الترحيب')  
-	.addField('!toggleInvitedby', 'تفعيل تم تعدوتك من قبل')
-	.addField('تقديم!', 'لي التقديم على رتبه في السيرفر')
-	.addField('رفض!', 'لي رفض عضو')
-	.addField('قبول!', 'لي قبول عضو')
-	.addField('!room1', 'لي انشاء روم التقديمات')
-	.addField('!room2', 'لي انشاء روم القبول-الرفض')
-	message.channel.send(helpEmbed);
-    }
-});
+**
+   
+`]
+    let page = 1;
 
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setFooter(`Page ${page} of ${pages.length}`)
+    .setDescription(pages[page-1])
+
+    message.author.sendEmbed(embed).then(msg => {
+
+        msg.react('◀').then( r => {
+            msg.react('▶')
+
+
+        const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
+        const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
+
+
+        const backwards = msg.createReactionCollector(backwardsFilter, { time: 2000000});
+        const forwards = msg.createReactionCollector(forwardsFilter, { time: 2000000});
+
+
+
+        backwards.on('collect', r => {
+            if (page === 1) return;
+            page--;
+            embed.setDescription(pages[page-1]);
+            embed.setFooter(`Page ${page} of ${pages.length}`);
+            msg.edit(embed)
+        })
+        forwards.on('collect', r => {
+            if (page === pages.length) return;
+      
+      page++;
+            embed.setDescription(pages[page-1]);
+            embed.setFooter(`Page ${page} of ${pages.length}`);
+            msg.edit(embed)
+        })
+        })
+    })
+    }
+}); 
 
 client.on('message', msg => {
   if(msg.content === '!hide') {
@@ -93,6 +157,19 @@ client.on('message', msg => {
       msg.channel.send({file : "https://cdn.pg.sa/1c4R2LijPA.png"})
     }
   });
+
+client.on('message', function(message) {
+    if (message.content == "!clear") {
+        if (message.member.hasPermission("MANAGE_MESSAGES")) {
+            message.channel.fetchMessages()
+               .then(function(list){
+                    message.channel.bulkDelete(list);
+                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
+		               message.reply("تم الحذف!")
+	}
+    }
+
+});
 
 client.on('message', message => { 
     if(message.content === prefix + 'cc1') {
@@ -1113,9 +1190,134 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return m
   }
 
 });
+
+ client.on('message', async message => {
+            if(message.content.includes('discord.gg')){
+                if(message.member.hasPermission("MANAGE_GUILD")) return;
+        if(!message.channel.guild) return;
+        message.delete()
+          var command = message.content.split(" ")[0];
+    let muterole = message.guild.roles.find(`name`, "Muted");
+    if(!muterole){
+      try{
+        muterole = await message.guild.createRole({
+          name: "Muted",
+          color: "#000000",
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      }catch(e){
+        console.log(e.stack);
+      }
+    }
+           if(!message.channel.guild) return message.reply('** This command only for servers**');
+     message.member.addRole(muterole);
+    const embed500 = new Discord.RichEmbed()
+      .setTitle("Muted Ads")
+            .addField(`**  You Have Been Muted **` , `**Reason : Sharing Another Discord Link**`)
+            .setColor("c91616")
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setAuthor(message.author.username, message.author.avatarURL)
+        .setFooter(`${message.guild.name} `)
+     message.channel.send(embed500)
+     message.author.send('` انت معاقب ميوت شاتي بسبب نشر سرفرات ان كان عن طريق الخطا **ف** تكلم مع الادارة `');
+   
+       
+    }
+})
+
+
+client.on('message', async function(message) {
+    	 if (!message.channel.guild) return;
+let muteRole1 = message.guild.roles.find("name", "Muted");
+     if (!muteRole1) return;
+  if (message.author.id == client.user.id) return;
+  if(JSON.stringify(user).indexOf(message.author.id) == -1) {
+    user[message.author.id] = message.createdTimestamp;
+    return;
+  } else {
+    if (Date.now() - user[message.author.id] < 695){
+              message.author.delete
+      if (JSON.stringify(warn).indexOf(message.author.id) == -1) {
+        warn[message.author.id] = 1;
+      } else {
+        warn[message.author.id]++;
+        message.author.delete
+      }
+      if (warn[message.author.id] < 6) {
+        message.author.delete
+
+      }
+      delete user[message.author.id];
+              message.author.delete
+
+    } else {
+      delete user[message.author.id];
+              message.author.delete
+
+    }
+  }
+  if (warn[message.author.id] == 6) {
+     if (!message.channel.guild) return;
+             message.author.delete
+
+let muteRole1 = message.guild.roles.find("name", "Muted");
+if(!muteRole1) {
+        muteRole1 = await message.guild.createRole({
+          name: "Muted",
+          color: "#ffffff",
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muteRole1, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false,
+			READ_MESSAGES_HISTORY:false
+        });
+		});
+  }
+     if (!muteRole1) return;
+    var guild = message.channel.guild;
+          var currentTime = new Date(),
+            Year = currentTime.getFullYear(),
+            Month = currentTime.getMonth() + 1,
+            Day = currentTime.getDate(),
+            hours = currentTime.getHours() + 3 ,
+            minutes = currentTime.getMinutes()+1,
+            seconds = currentTime.getSeconds();
+
+           if (!message.channel.guild) return;
+     if (!muteRole1) return;
+    var guild = message.channel.guild;
+    message.guild.members.get(message.author.id).addRole(muteRole1);
+	setTimeout(function(){
+		    message.guild.members.get(message.author.id).removeRole(muteRole1);
+	},7200000);
+     var msg;
+        msg = parseInt();
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+delete warn[message.author.id];
+    delete user[message.author.id];
+	const embed500 = new Discord.RichEmbed()
+     .setTitle(`mark:  | There is someone trying `)
+      .setDescription(":white_check_mark:  | `There is someone trying to do spam`\n\nName:\n"+`${message.author.username}#${message.author.discriminator}`+"\nThe required procedures have been taken")      .setColor("ff0000")
+    message.channel.send(embed500)
+    	const embed20 = new Discord.RichEmbed()
+      .setTitle(":scales: | you are punished")
+      .setDescription(`**You have been Muted **\n\nBy:\n${client.user.tag}\n\nThe reason:\nSpam Chat\n\nMuted Date:\n`+ Year + "/" + Month + "/" + Day +', '+hours +'-' +minutes+'-'+seconds+"\n \n \n`If the punishment by mistake continues with the administration \n\nTime of unmute : Two hours after the date of the death`")
+          .setFooter(message.guild.iconURL)
+      .setColor("ff0000")
+
+     message.author.send(embed20)
+
+  }
+});
  
-
-
 client.on('guildCreate', guild => {
   var embed = new Discord.RichEmbed()
   .setColor(0x5500ff)
