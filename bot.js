@@ -20,6 +20,16 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+     if (message.content === (prefix + "help")) {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#8650a7")
+  .addField("Done" , " تــــم ارســالك في الخــاص")
+  message.channel.sendEmbed(embed);
+    }
+});
+
+client.on('message', message => {
     if (message.content === '!help') {
         let helpEmbed = new Discord.RichEmbed()
         .setTitle('**برفكس البوت(!)**')
