@@ -19,31 +19,7 @@ client.on('message', message => {
   	}
 });
 
-client.on('guildMemberAdd', member => {
-  var embed = new Discord.RichEmbed()
-  .setTitle(" :smiley: عضو جديد دخل السيرفر")
-  .setColor("RANDOM")
-  .addField("اسم العضو",${member})
-  .addField("ايدي العضو",${member.id})
-  .addField("رقم العضو",${member.guild.memberCount})
-  .setThumbnail("http://www.ymcaswkansas.org/sites/ymcaswkansas.org/files/civicrm/friend.png%22)
-  var channel =member.guild.channels.find('name', 'chat')
-if (!channel) return;
-      channel.send({embed : embed});
-});
 
-client.on('guildMemberRemove', member => {
-  var embed = new Discord.RichEmbed()
-  .setTitle("عضو غادر السيرفر")
-  .setColor("RANDOM")
-  .addField("اسم العضو",${member})
-  .addField("ايدي العضو",${member.id})
-  .addField("تبقى",${member.guild.memberCount})
-  .setThumbnail("https://cdn.onlinewebfonts.com/svg/img_948.png%22)
-  var channel =member.guild.channels.find('name', 'chat')
-  if (!channel) return;
-        channel.send({embed : embed});
-  });
 
 client.on("guildMemberAdd", member => {
         if(member.guild.id === "531965140300464128") { ////////////// Mal , Codes هنا ايدي السيرفر
