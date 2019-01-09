@@ -30,29 +30,6 @@ channel.send(`** Welcome To Friends server:dove:<@${member.user.id}>** `)
 
 
 
-client.on("ready", async  => {
-  setInterval(function(){
-  client.channels.find('id', '532226977055113236').setName("W");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("We");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Wel");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welc");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welco");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcom");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome T");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To F");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To Fr");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To Fri");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To Frie");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To Frien");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To Friend");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To Friends");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To Friends");//Toxic Codes
-  client.channels.find('id', '532226977055113236').setName("Welcome To  Friends server");//Toxic Codes
-    }, 4000);
-  });
-
 client.on('message', message => {
      if (message.content === (prefix + "help")) {
      let embed = new Discord.RichEmbed()
