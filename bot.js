@@ -163,14 +163,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
     }
 });
 
-client.on('message', message=> {
-    if (message.author.bot) return;
-    if (message.isMentioned(client.user))
-    {
-    message.reply(" what do you need ?");
-    }
-});
-
 
 console.log('a7med is one ');
 client.on('ready', () => {
