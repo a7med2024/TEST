@@ -1520,11 +1520,6 @@ client.on("guildMemberAdd", member => {
 
 
 
-
-client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","welcome"));
-    });
-
 client.on('message', message => {
     if(message.channel.type === 'dm') {
         var guildID = '531965140300464128'; // <=============== ايدي السيرفر حقك
