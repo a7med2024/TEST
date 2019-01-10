@@ -1,18 +1,35 @@
 const Discord = require('discord.js');
+const db = require('quick.db');
 const client = new Discord.Client();
-const bot = new Discord.Client();
+const giphy = require('giphy-api')();
+const googl = require('goo.gl');
 const prefix = '!'
-const ytdl = require('ytdl-core');
-const request = require('request');
 const devs = ["514041065041297421"] 
 const adminprefix = "!";
-const fs = require('fs');
-const moment = require('moment');
+const translate = require('google-translate-api'); 
+const fs = require("fs");
+const getYoutubeID = require('get-youtube-id'); 
+const moment = require("moment");
+const { Client, Util } = require('discord.js');
+const UserBlocked = new Set();
 const jimp = require('jimp');
-const Canvas = require('canvas');
-const getYoutubeID = require('get-youtube-id');
+const math = require('math-expression-evaluator'); 
+const stripIndents = require('common-tags').stripIndents;
+const figlet = require('figlet');
+const google = require('google-it'); 
+const queue = new Map();
+const zalgo = require('zalgolize');
 const fetchVideoInfo = require('youtube-info');
-const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
+const YouTube = require('simple-youtube-api');
+const ytdl = require('ytdl-core');
+const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
+const sql = require("sqlite");
+const dateFormat = require('dateformat');
+const pretty = require('pretty-ms') 
+,ti={}
+,spee={};
+
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
