@@ -1055,7 +1055,7 @@ client.on('message', message => {
  
   .setColor("#FF0000")
   .addField('``سرعة أتصال الــبوت`` ' , `${Date.now() - message.createdTimestamp}` + ' ms`')
-                 .setFooter(` Premium Bot
+                 .setFooter(` A7med Bot
  .`, 'https://aladdintravel.com/wp-content/uploads/2014/11/pinterest-logo-2-1074x1067.png')
 
   message.channel.sendEmbed(embed);
