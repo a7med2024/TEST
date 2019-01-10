@@ -1492,7 +1492,7 @@ client.on("guildMemberAdd", member => {
                               ctx.font = '30px Arial';
                               ctx.fontSize = '28px';
                               ctx.fillStyle = "#FFFFFF";
-      ctx.fillText(`A7med here welcome`, 245, 80);
+      ctx.fillText(`welcome to welcome`, 245, 80);
     
                               //AVATARً
                               let Avatar = Canvas.Image;
