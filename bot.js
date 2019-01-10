@@ -1037,7 +1037,6 @@ if(message.content.startsWith("!slots")) {
 }
 });
 
-var prefix = "!";
 
 client.on('message', message => {
   if (message.author.bot) return;
