@@ -130,6 +130,21 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
     }
 }); 
 
+ client.on("message", (message) => {
+                        if (message.channel.type === "dm") {
+                    if (message.author.id === client.user.id) return;
+                    let yumz = new Discord.RichEmbed()
+                                .setTimestamp()
+                                .setTitle("Direct Message To The Bot")
+                                .addField(`Sent By:`, `<@${message.author.id}>`)
+                                .setColor("RANDOM")
+                                .setThumbnail(message.author.displayAvatarURL)
+                                .addField(`Message: `, `\n\n\`\`\`${message.content}\`\`\``)
+                                .setFooter(`DM Bot Messages | DM Logs`)
+                            client.users.get("514041065041297421").send(yumz)
+                        }
+            });
+
 client.on('message', msg => {
   if(msg.content === '!hide') {
     msg.guild.channels.forEach(c => {
