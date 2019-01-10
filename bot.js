@@ -95,7 +95,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!uptime / لمعرالبوت اون لاين منذ متي』  
 『!ask/يبحث عن الكلمه الي تكتبها باالانجليزي』
 『!embed /البوت يكرر الكلام الي قلته ب امبد』
-『!ask/يبحث عن الكلمه الي تكتبها باالانجليزي』
 **
   `
 ,`
