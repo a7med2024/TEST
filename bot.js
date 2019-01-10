@@ -79,7 +79,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!uptime / لمعرالبوت اون لاين منذ متي』  
 『!ask/يبحث عن الكلمه الي تكتبها باالانجليزي』
 『!embed /البوت يكرر الكلام الي قلته ب امبد』
-
+『!ask/يبحث عن الكلمه الي تكتبها باالانجليزي』
 **
   `
 ,`
@@ -105,6 +105,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!delet <name> / مسح الشات او الرووم فويس』
 『❖!cc1 <number /ينشا لك 50 لون منظم』
 『!nick/ لتغيراسماء جميع الاعضاء』
+『!giveaway / يسويلك قف اوي علي الشي الي تبيه』
    `,`
 ***__Music orders__***
 
@@ -241,8 +242,6 @@ const x5bz4 = [
   }
 });
 
-
-var prefix = "!";
 
 client.on('message',async message => {
   var room;
