@@ -458,8 +458,6 @@ client.on("guildDelete", guild => {
   client.channels.get("514041065041297421").send('** :purple_heart: a7med Bot  **``Kicked``:x:  From Server '+`** [ ${guild.name} ] **`+''+' The Owner Is ' +`**[ ${guild.owner.user.username} ]**` +'')
   });
 
-var prefix = "!";
-
 client.on('message', message => {
      if (message.author.bot) return;
 if (message.content.startsWith(prefix + "uptime")) {
