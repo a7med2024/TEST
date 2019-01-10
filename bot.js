@@ -1492,7 +1492,7 @@ client.on("guildMemberAdd", member => {
                               ctx.font = '30px Arial';
                               ctx.fontSize = '28px';
                               ctx.fillStyle = "#FFFFFF";
-      ctx.fillText(`welcome to welcome`, 245, 80);
+      ctx.fillText(`welcome to server`, 245, 80);
     
                               //AVATARً
                               let Avatar = Canvas.Image;
@@ -1519,30 +1519,6 @@ client.on("guildMemberAdd", member => {
       });
 
 
-const invites = {};
-
-const wait = require('util').promisify(setTimeout);
-
-client.on('ready', () => {
-  wait(20000);
-
-  client.guilds.forEach(g => {
-    g.fetchInvites().then(guildInvites => {
-      invites[g.id] = guildInvites;
-    });
-  });
-});
-
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    invites[member.guild.id] = guildInvites;
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "welcome");
-    logChannel.send(` Invited by: <@${inviter.id}>`);
-  });
-});  
 
 client.on('message', message => {
     if(message.channel.type === 'dm') {
