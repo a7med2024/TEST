@@ -1524,6 +1524,42 @@ client.on("guildMemberAdd", member => {
       }
       });
 
+client.on("guildMemberAdd", member => {
+        if(member.guild.id === "526075350393028618") { ////////////// Mal , Codes هنا ايدي السيرفر
+  const channel = member.guild.channels.find('id', '526075351131095061'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
+if (!channel) return;
+channel.send(`** Welcome To friends server:dove:<@${member.user.id}>** `)  
+}});
+
+const invites = {};
+
+const wait = require('util').promisify(setTimeout);
+
+client.on('ready', () => {
+  wait(1000);
+
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
+});
+
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    invites[member.guild.id] = guildInvites;
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const logChannel = member.guild.channels.find(channel => channel.name === "welcome");
+    logChannel.send(`${member} Invited by: <@${inviter.id}>`);
+  });
+});
+
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","friend"));
+    });
+
 client.on('message', message => {
     if(message.channel.type === 'dm') {
         var guildID = '531965140300464128'; // <=============== ايدي السيرفر حقك
