@@ -1,17 +1,23 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const bot = new Discord.Client();
 const prefix = '!'
+const ytdl = require('ytdl-core');
+const request = require('request');
 const devs = ["514041065041297421"] 
 const adminprefix = "!";
 const fs = require('fs');
 const moment = require('moment');
 const jimp = require('jimp');
 const Canvas = require('canvas');
-
-
+const getYoutubeID = require('get-youtube-id');
+const fetchVideoInfo = require('youtube-info');
+const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
+var table = require('table').table
 client.on('ready', () => {
-    console.log('I am ready!');
+  console.log(`Logged in as ${client.user.tag}!`);
 });
+
 
 client.on('message', message => {
     if (message.content === 'السلام عليكم') {
