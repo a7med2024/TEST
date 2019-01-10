@@ -1519,8 +1519,8 @@ client.on("guildMemberAdd", member => {
       });
 
 client.on("guildMemberAdd", member => {
-        if(member.guild.id === "526075350393028618") { ////////////// Mal , Codes هنا ايدي السيرفر
-  const channel = member.guild.channels.find('id', '526075351131095061'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
+        if(member.guild.id === "523634921869279235") { ////////////// Mal , Codes هنا ايدي السيرفر
+  const channel = member.guild.channels.find('id', '532625623856840715'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
 if (!channel) return;
 channel.send(`** Welcome To friends server:dove:<@${member.user.id}>** `)  
 }});
@@ -1551,7 +1551,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","friend"));
+    member.addRole(member.guild.roles.find("name","welcome"));
     });
 
 client.on('message', message => {
