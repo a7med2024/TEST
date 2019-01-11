@@ -8,10 +8,34 @@ const fs = require("fs");
 const prefix = '!'
 const devs = ["514041065041297421"] 
 const adminprefix = "!";
-
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
+
+client.on('ready', function(){
+    var ms = 60000 ;
+    var setGame = [`${client.guilds.size} Server`,' A7med Bot™ by A7med ','Type !help |!support |!invite ',`${client.users.size} Members`,'!invite','By: A7MED '];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/n3k4a`);
+    }, ms);
+    console.log(` ╔═══╗──╔╗ |> Name: ${client.user.username}`);
+ console.log(` ║╔═╗║──║║ |> Servers: ${client.guilds.size}`);
+ console.log(` ║║─╚╬══╣║╔══╦╗╔╦╗─╔╗ |> Members: ${client.users.size}`);
+ console.log(` ║║╔═╣╔╗║║║╔╗╠╬╬╣║─║║║ |> Channels: ${client.channels.size}`);
+ console.log(` ║╚╩═║╔╗║╚╣╔╗╠╬╬╣╚═╝║ |> Channels: ${client.channels.size}`);
+ console.log(` ╚═══╩╝╚╩═╩╝╚╩╝╚╩═╗╔╝ |> Id: ${client.user.id}`);
+ console.log(` ───────────────╔═╝║`);
+ console.log(` ───────────────╚══╝`);
+
 
 
 client.on('message', message => {
@@ -2577,56 +2601,6 @@ client.on("message", (message) => {
 });  
 
 
-
- 
-client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!devs.includes(message.author.id)) return;
-     
-  if (message.content.startsWith(adminprefix + 'pl')) {
-    client.user.setGame(argresult);
-      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
-  } else
-    if (message.content === (adminprefix + "leave")) {
-    message.guild.leave();        
-  } else  
-  if (message.content.startsWith(adminprefix + 'wt')) {// لجعل البوت في حاله الواتشنق
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
-  } else
-  if (message.content.startsWith(adminprefix + 'setprefix')) {//لتغير البريفكس
-  client.user.setPrefix(argresult).then
-      message.channel.send(`**Prefix Changed :white_check_mark: ${argresult}** `)
-  } else
-  if (message.content.startsWith(adminprefix + 'ls')) {// لجعل البوت في حاله الاستماع
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
-  } else     //Narox
-    if (message.content.startsWith(adminprefix + 'setname')) {// لتغير اسم البوت
-  client.user.setUsername(argresult).then
-      message.channel.sendMessage(`**${argresult}** : Done `)
-  return message.reply("**Name Changed :white_check_mark:**");
-  } else
-    if (message.content.startsWith(adminprefix + 'setavatar')) {// لتغير صوره البوت
-  client.user.setAvatar(argresult);
-    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-        } else    
-  if (message.content.startsWith(adminprefix + 'st')) {// لعمل ستريمنق للبوت
-    client.user.setGame(argresult, "https://www.twitch.tv/idk");
-      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
-  }
-    if(message.content === adminprefix + "restart") {// لعمل ريسترت للبوت
-      if (!devs.includes(message.author.id)) return;
-          message.channel.send(`:warning:️ **Bot restarting by ${message.author.username}**`);
-        console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        console.log(`⚠️ Bot restarting... ⚠️`);
-        console.log("===============================================\n\n");
-        client.destroy();
-        child_process.fork(__dirname + "/bot.js");
-        console.log(`Bot Successfully Restarted`);
-    }
- 
-  });
 
 
 
