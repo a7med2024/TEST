@@ -6,7 +6,7 @@ const jimp = require('jimp');
 const Canvas = require('canvas');
 const fs = require("fs");
 const prefix = '!'
-const devs = ["514041065041297421"] 
+const devs = ["533140382259871744"] 
 const adminprefix = "!";
 
 client.on('ready', () => {
