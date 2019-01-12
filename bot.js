@@ -432,12 +432,12 @@ if (command == "غرد") {
 
 client.on("guildCreate", guild => {
 console.log(` a7med Bot  Added To Server ${guild.name} , The Owner Is ${guild.owner.user.username} , Members In Server : **[${guild.memberCount}]**            `)
-client.channels.get("514041065041297421").send('** :purple_heart: Premium Bot ** ``Added``:white_check_mark:  To Server '+`** [ ${guild.name} ] **`+''+'  The Owner Is  ' +`**[ ${guild.owner.user.username} ]** , Members In Server : **[${guild.memberCount}]**` +'')
+client.channels.get("533140382259871744").send('** :purple_heart: Premium Bot ** ``Added``:white_check_mark:  To Server '+`** [ ${guild.name} ] **`+''+'  The Owner Is  ' +`**[ ${guild.owner.user.username} ]** , Members In Server : **[${guild.memberCount}]**` +'')
 });
 
 client.on("guildDelete", guild => {
   console.log(`  a7med Bot  Leave From Server ${guild.name}, The Server Owner Is ${guild.owner.user.username}`)
-  client.channels.get("514041065041297421").send('** :purple_heart: a7med Bot  **``Kicked``:x:  From Server '+`** [ ${guild.name} ] **`+''+' The Owner Is ' +`**[ ${guild.owner.user.username} ]**` +'')
+  client.channels.get("533140382259871744").send('** :purple_heart: a7med Bot  **``Kicked``:x:  From Server '+`** [ ${guild.name} ] **`+''+' The Owner Is ' +`**[ ${guild.owner.user.username} ]**` +'')
   });
 
 client.on('message', message => {
@@ -1116,7 +1116,7 @@ var cont = message.content.slice(prefix.length).split(" ");
                                 .setThumbnail(message.author.displayAvatarURL)
                                 .addField(`Message: `, `\n\n\`\`\`${message.content}\`\`\``)
                                 .setFooter(`DM Bot Messages | DM Logs`)
-                            client.users.get("514041065041297421").send(yumz)
+                            client.users.get("533140382259871744").send(yumz)
                         }
             });
 
@@ -1415,7 +1415,7 @@ var prefix = "!";
 if(message.channel.type === "dm") return;
 if(message.author.bot) return;
   if(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
-    channel: "welcome"
+    channel: "chat"
 }
 const channel = sWlc[message.guild.id].channel
   if (message.content.startsWith(prefix + "setwelcomer")) {
@@ -1429,7 +1429,7 @@ const channel = sWlc[message.guild.id].channel
 
 client.on("guildMemberAdd", member => {
       if(!sWlc[member.guild.id]) sWlc[member.guild.id] = {
-    channel: "welcome"
+    channel: "chat"
   }
   const channel = sWlc[member.guild.id].channel
     const sChannel = sWlc[member.guild.id].channel
@@ -1510,7 +1510,7 @@ client.on("guildMemberAdd", member => {
 
 client.on('message', message => {
     if(message.channel.type === 'dm') {
-        var guildID = '531965140300464128'; // <=============== ايدي السيرفر حقك
+        var guildID = '533625461083996191'; // <=============== ايدي السيرفر حقك
         if(message.content.includes('discord.gg/')) {
             var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
             member.ban({ reason: 'ADS In Private.' }).catch();
@@ -1940,7 +1940,7 @@ var heroo = new Discord.RichEmbed()
 .setColor('#6a109d')
 .setTimestamp(new Date())
 .setThumbnail(client.user.avatarURL)
-.setTitle('SLiver Bot Info')
+.setTitle('A7med Bot Info')
 .setURL('https://discordapp.com/oauth2/authorize?client_id=471464656242737183&permissions=2080898225&scope=bot')
 .setAuthor(client.user.username,client.user.avatarURL)
 .addField("**البرفكس** :",`**[ ${prefix} ]**`,true)
@@ -2065,31 +2065,83 @@ if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');
 });
 
 client.on('message', message => {
-var prefix = "!";
+    var prefix = "!";
+    
+        if (message.author.id === client.user.id) return;
+        if (message.guild) {
+       let embed = new Discord.RichEmbed()
+        let args = message.content.split(' ').slice(1).join(' ');
+    if(message.content.split(' ')[0] == prefix + 'bc') {
+        if (!args[1]) {
+    message.channel.send("**f!bc <message>**");
+    return;
+    }
+            message.guild.members.forEach(m => {
+       if(!message.member.hasPermission('ADMINISTRATOR')) return;
+                var bc = new Discord.RichEmbed()
+                .addField('» السيرفر :', `${message.guild.name}`)
+                .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
+                .addField(' » الرسالة : ', args)
+                .setColor('#ff0000')
+                // m.send(`[${m}]`);
+                m.send(`${m}`,{embed: bc});
+            });
+        }
+        } else {
+            return;
+        }
+    });
+    
+const weather = require('weather-js');//npm install weather-js
+client.on('message', message => {
+    let msg = message.content.toUpperCase(); 
+    let cont = message.content.slice(prefix.length).split(" "); 
+    let args = cont.slice(1); 
+    if (msg.startsWith(prefix + 'weather')) { 
 
-    if (message.author.id === client.user.id) return;
-    if (message.guild) {
-   let embed = new Discord.RichEmbed()
-    let args = message.content.split(' ').slice(1).join(' ');
-if(message.content.split(' ')[0] == prefix + 'bc') {
-    if (!args[1]) {
-message.channel.send("**!bc <message>**");
-return;
-}
-        message.guild.members.forEach(m => {
-   if(!message.member.hasPermission('ADMINISTRATOR')) return;
-            var bc = new Discord.RichEmbed()
-            .addField('» السيرفر :', `${message.guild.name}`)
-            .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
-            .addField(' » الرسالة : ', args)
-            .setColor('#ff0000')
-            // m.send(`[${m}]`);
-            m.send(`${m}`,{embed: bc});
+        weather.find({search: args.join(" "), degreeType: 'F'}, function(err, result) {
+            if (err) message.channel.send(err);
+
+            
+            if (result.length === 0) {
+                message.channel.send('**Please enter a valid location.**').
+                return; 
+            }
+
+           
+            var current = result[0].current; 
+            var location = result[0].location; 
+
+           
+            const embed = new Discord.RichEmbed()
+.setDescription(`**${current.skytext}**`) 
+                .setAuthor(`Weather for ${current.observationpoint}`) 
+                .setThumbnail(current.imageUrl) 
+                .setColor(0x00AE86) 
+                .addField('Timezone',`UTC${location.timezone}`, true) 
+                .addField('Degree Type',location.degreetype, true)
+                .addField('Temperature',`${current.temperature} Degrees`, true)
+                .addField('Feels Like', `${current.feelslike} Degrees`, true)
+                .addField('Winds',current.winddisplay, true)
+                .addField('Humidity', `${current.humidity}%`, true)
+
+                
+                message.channel.send({embed});
         });
     }
-    } else {
-        return;
-    }
+
+});
+
+client.on('message', async message => {
+    
+    let args = message.content.split(' ').slice(1);
+if (message.content.startsWith("!dcolor")) {
+if(!message.member.hasPermission('ADMINISTRATOR')) return
+let role = message.guild.roles.find('name', 'رقم الون');
+
+role.delete()
+}
+
 });
 
 client.on('message', message => {
