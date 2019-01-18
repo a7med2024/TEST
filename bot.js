@@ -19,6 +19,59 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', async message => {
+if(message.content.startsWith(prefix + "obc")) {
+  let i = client.users.size;
+  if(message.author.id !== 'الأيدي حقك') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
+  var args = message.content.split(' ').slice(1).join(' ');
+  if(!args) return message.channel.send('❎ » يجب عليك كتابة الرسالة')
+  setTimeout(() => {
+    message.channel.send(`تم الارسال لـ ${i} شخص`)
+  }, client.users.size * 500);
+  client.users.forEach(s => {
+    s.send(args).catch(e => i--);
+  });
+}
+});
+
+client.on("message", msg => { //Narox Dev
+    if(msg.author.bot) return;
+    if(msg.channel.type === 'dm') return;
+  let prefix = '!'; //البرفكس
+  let msgarray = msg.content.split(" ");
+  let cmd = msgarray[0];
+  let args = msgarray.slice(1);
+  if(cmd === `${prefix}warn`){//الامر
+    
+    
+  
+    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+  if(!rUser) return msg.channel.send("Couldn't find users.");
+      let reason = args.join(" ").slice(22);
+  
+      let reportembed = new Discord.RichEmbed()
+      .setDescription("Warn")
+      .setColor("BLACK")
+      .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
+      .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
+      .addField("Channel", msg.channel)
+      .addField("Time", msg.createdAt)
+      .addField("Reason",`${reason}`)
+      
+      
+      let reportchannel = msg.guild.channels.find(`name`,"warn-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+      if(!reportchannel) return msg.channel.send("Couldn't find `warn-log` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+      
+      msg.delete().catch(O_o=>{});
+      reportchannel.send(reportembed);
+      let role = msg.guild.roles.find(`name`, 'Warn'); 
+      if(!role) return msg.guild.channel.send("Could't find `Warn` role."); 
+      rUser.addRole(role);
+      
+          return;
+      }
+      });
+
 client.on('message', message => {
   if(message.content.includes('discord.gg')){
                                           if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
@@ -301,7 +354,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!uptime / لمعرالبوت اون لاين منذ متي』  
 『!ask/يبحث عن الكلمه الي تكتبها باالانجليزي』
 『!embed /البوت يكرر الكلام الي قلته ب امبد』
-『!inforoom/يبين لك معلومات الروم بس لازم تكتب اسم الروم』
 **
   `
 ,`
@@ -309,6 +361,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 **
 『!move @user /  لسحب الشخص الى روومك』
 『!bc / رسالة جماعية الى كل اعضاء السيرفر』
+『!obc / رساله لكل  الا فسيرفر』
 『!role @user <rank> / لأعطاء رتبة لعضو معين』
 『!roleremove @user <rank> / لازالة الرتبة من شخص معين』
 『!role all <rank> / لأعطاء رتبة للجميع』
@@ -328,6 +381,8 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『❖!cc1 <number /ينشا لك 50 لون منظم』
 『!nick/ لتغيراسماء جميع الاعضاء』
 『!giveaway / يسويلك قف اوي علي الشي الي تبيه』
+『!inforoom/يبين لك معلومات الروم بس لازم تكتب اسم الروم』
+『!warn/امر تحزير العضو』
    `,`
 ***__Music orders__***
 
