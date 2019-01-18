@@ -19,6 +19,41 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', async message => {
+  if(message.author.bot) return;
+  let prefix = '!';
+
+  let command = message.content.split(" ")[0].slice(prefix.length);
+  let args = message.content.split(" ").slice(1);
+  if(!message.content.toLowerCase().startsWith(prefix)) return;
+
+  if(command == 'مسح الالوان' ) {
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`لاتمتلك الصلاحيات لفعل ذلك! ❌`);
+    message.channel.send("جاري المسح..").then(async m => {
+      await message.guild.roles.forEach(role => {
+        if(/^\d+$/gi.test(role.name)) {
+          role.delete();
+        }
+      });
+      m.edit(`تم إزالة جميع الالوان.`)
+    });
+  }
+});
+
+client.on('message', dark => {
+    
+    if (dark.content === "a7med") {
+        setInterval(function(){
+        dark.edit('**a**')    
+        dark.edit('**a7**')    
+        dark.edit('**a7m**')
+        dark.edit('**a7me**')
+	dark.edit('**a7med**')
+        }, 900)
+    }
+    
+})
+
 const bannedwords = [
     "كسمك",
     "كسختك",
