@@ -19,9 +19,6 @@ client.on('message', message => {
   	}
 });
 
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
   client.on("message", message => {
     if(message.content.startsWith("!verify")) {
       let num = Math.floor((Math.random() * 4783) + 10);
