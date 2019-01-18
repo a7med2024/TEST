@@ -446,7 +446,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
     }
 });
 
-
 console.log('a7med is one ');
 client.on('ready', () => {
   console.log(`im redey`);
