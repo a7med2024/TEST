@@ -19,12 +19,6 @@ client.on('message', message => {
   	}
 });
 
-client.on('message', message => {
-    if (message.content.startsWith("531839137901182988"))
-    
-    message.reply("Bot Owner : YOU");
-    
-});
 
 client.on("message", async message => {
     var prefix = "!";  // البرفكس .
