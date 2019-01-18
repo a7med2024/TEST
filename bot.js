@@ -19,6 +19,16 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', message => {
+  if(message.content.includes('discord.gg')){
+                                          if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
+      if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+      message.delete()
+  return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+  }
+}
+});
+
 client.on('message', async message => {
   if(message.author.bot) return;
   let prefix = '!';
