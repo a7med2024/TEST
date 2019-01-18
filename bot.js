@@ -22,7 +22,7 @@ client.on('message', message => {
 client.on('message', async message => {
 if(message.content.startsWith(prefix + "obc")) {
   let i = client.users.size;
-  if(message.author.id !== 'الأيدي حقك') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
+  if(message.author.id !== '533140382259871744') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
   var args = message.content.split(' ').slice(1).join(' ');
   if(!args) return message.channel.send('❎ » يجب عليك كتابة الرسالة')
   setTimeout(() => {
