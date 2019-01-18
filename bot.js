@@ -64,6 +64,9 @@ const bannedwords = [
     "بكسمك",
     "يا كسمك",
      "زبي",
+     "طيز",
+     "طيزك",
+     "العاهره",
   ];
 
 client.on('message',  message => {
@@ -255,7 +258,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 **
 :gem:  البوت فيه كثير ميزات حلوة و جميلة
  ا:rocket: البوت يعمل 24 ساعه 
-
+       البوت فيه منع السب
         ***__General orders__***
 **
 『!allbots/لعرض جميع البوتات الي بالسيرفر』
@@ -288,6 +291,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!uptime / لمعرالبوت اون لاين منذ متي』  
 『!ask/يبحث عن الكلمه الي تكتبها باالانجليزي』
 『!embed /البوت يكرر الكلام الي قلته ب امبد』
+『!inforoom/يبين لك معلومات الروم بس لازم تكتب اسم الروم』
 **
   `
 ,`
