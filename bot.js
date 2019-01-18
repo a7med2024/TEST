@@ -19,13 +19,38 @@ client.on('message', message => {
   	}
 });
 
-client.on('message', message => {
-  if (message.content.toLowerCase().startsWith(prefix+ `top server`))  {
+var invs2 = {}
+var invites = {};
 
-const top = client.guilds.sort((a,b)=>a.memberCount-b.memberCount).array().reverse()
-message.channel.send(`**Top 10 Servers : **\n1. **${top[0].name}**: ${top[0].memberCount} \n2. **${top[1].name}**: ${top[1].memberCount}.\n3. **${top[2].name}**: ${top[2].memberCount}.\n4. **${top[3].name}**: ${top[3].memberCount}.\n5. **${top[4].name}**: ${top[4].memberCount}.\n6. **${top[5].name}**: ${top[5].memberCount}.\n7. **${top[6].name}**: ${top[6].memberCount}.\n8. **${top[7].name}**: ${top[7].memberCount}.\n9. **${top[8].name}**: ${top[8].memberCount}.\n10. **${top[9].name}**: ${top[9].memberCount} .`)
-}
-  });
+client.on('ready', () => {
+    client.guilds.forEach(g => {
+        g.fetchInvites().then(guildInvites => {
+            invites[g.id] = guildInvites;
+        });
+    });
+});
+
+client.on('guildMemberAdd', member => {
+    member.guild.fetchInvites().then(ServerInvs => {
+        var ei = invites[member.guild.id];
+        invites[member.guild.id] = ServerInvs;
+        var invite = ServerInvs.find(i => ei.get(i.code).uses < i.uses);
+        if (!invs2[invite.code]) invs2[invite.code] = {users: new Set()};
+        invs2[invite.code].users.delete(member.id);
+        setTimeout(function(){
+            invs2[invite.code].users.remove(member.id);
+        },10000);
+        var x = 0;
+        invs2[invite.code].users.forEach(() => {
+            x++;
+            if (x >= 7) {
+                invs2[invite.code].users.forEach(user => {
+                    member.guild.members.get(user).ban();
+                });
+            };
+        });
+    });
+});
 
 client.on("message", async message => {
     var prefix = "!";  // البرفكس .
