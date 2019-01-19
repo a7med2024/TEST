@@ -318,8 +318,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!ask/يبحث عن الكلمه الي تكتبها باالانجليزي』
 『!embed /البوت يكرر الكلام الي قلته ب امبد』
 **
-  `
-,`
+`,`
         ***__Administrative Orders__***
 **
 『!move @user /  لسحب الشخص الى روومك』
@@ -365,7 +364,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『نكت مضحكه/ !نكت』
 『!rps/لعبه حجر ورقه مقص』
 **
-   
 `]
     let page = 1;
 
@@ -407,8 +405,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
         })
     })
     }
-});
-
+}); 
 console.log('a7med is one ');
 client.on('ready', () => {
   console.log(`im redey`);
@@ -1392,6 +1389,13 @@ client.on('message', msg => {
     msg.channel.send('.')
   }
 })
+
+  client.on('message', msg => {//msg
+    if (msg.content === 'الوان') {
+      msg.channel.send({file : "https://cdn.pg.sa/1c4R2LijPA.png"})
+    }
+  });
+
 
 client.on('message', message => { 
     if(message.content === prefix + 'cc1') {
