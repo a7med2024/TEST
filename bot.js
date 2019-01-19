@@ -48,7 +48,6 @@ client.on('message', message => {
 client.on('message', async message => {
   if(message.author.bot) return;
   let prefix = '!';
-
   let command = message.content.split(" ")[0].slice(prefix.length);
   let args = message.content.split(" ").slice(1);
   if(!message.content.toLowerCase().startsWith(prefix)) return;
