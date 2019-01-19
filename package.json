@@ -12,6 +12,7 @@
     "canvas": "^1.6.12",
     "child_process": "^1.0.2",
     "common-tags":"1.8.0",
+   "anti-spam": "0.0.1",
     "dateformat": "^3.0.3",
    "discord.js": "^11.3.2",
     "discord.js-musicbot-addon": "^1.10.3",
