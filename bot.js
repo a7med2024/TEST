@@ -19,6 +19,27 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', async message => {
+  if(message.author.bot) return;
+  let prefix = '!';
+
+  let command = message.content.split(" ")[0].slice(prefix.length);
+  let args = message.content.split(" ").slice(1);
+  if(!message.content.toLowerCase().startsWith(prefix)) return;
+
+  if(command == 'dcolors') {
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`لاتمتلك الصلاحيات لفعل ذلك! :x:`);
+    message.channel.send("جاري المسح..").then(async m => {
+      await message.guild.roles.forEach(role => {
+        if(/^\d+$/gi.test(role.name)) {
+          role.delete();
+        }
+      });
+      await m.edit(`تم إزالة جميع الالوان.`)
+    });
+  }
+});
+
 const weather = require('weather-js');//npm install weather-js
 client.on('message', message => {
     let msg = message.content.toUpperCase(); 
