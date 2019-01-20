@@ -146,7 +146,7 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 
 
         backwards.on('collect', r => {
-            if (page === 1) return;
+            if (page === 3) return;
             page--;
             embed.setDescription(pages[page-1]);
             embed.setFooter(`Page ${page} of ${pages.length}`);
