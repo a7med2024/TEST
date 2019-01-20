@@ -123,12 +123,12 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 **
    
 `]
-    let page = 1;
+    let page = 3;
 
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setFooter(`Page ${page} of ${pages.length}`)
-    .setDescription(pages[page-1])
+    .setDescription(pages[page-3])
 
     message.author.sendEmbed(embed).then(msg => {
 
