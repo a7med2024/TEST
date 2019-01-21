@@ -3534,7 +3534,7 @@ client.on('message', function(message) {
     
         
     }
-    }
+    
 })
 
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
