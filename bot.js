@@ -130,7 +130,7 @@ if (message.content === "!help") {
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setFooter(`Page ${page} of ${pages.length}`)
-    .setDescription(pages[page-3])
+    .setDescription(pages[page-1])
 
     message.author.sendEmbed(embed).then(msg => {
 
