@@ -3516,7 +3516,7 @@ client.on('message', message => {
   });
 
 client.on('message', function(message) {
-   if(!message.member.hasPermission('ADMINISTRATOR')) return; 
+   if (!message.guild.member(message.author).hasPermission(8)) return;
             let command = message.content.split(" ")[0];
         if(message.content.includes('discord.gg')){
         message.reply (' ')
