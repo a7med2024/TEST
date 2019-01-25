@@ -3515,6 +3515,17 @@ client.on('message', message => {
  
   });
 
+client.on('message', message => {/////A7MED
+    if(message.content.toLowerCase().startsWith(discord.gg)){
+        message.member.addRole(message.guild.roles.find('name', 'Muted'));
+        var embed = new Discord.RichEmbed()
+        .setDescription(تمت معاقبتك لنشرك سيرفر اخر هنا)
+            message.delete();
+        message.channel.send(<@${message.author.id});
+        message.channel.send({embed});
+    }/////A7MED
+});/////A7MED
+
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
