@@ -80,6 +80,7 @@ if (message.content === "!help") {
 『!dr / <مسح كل الرانكات <لازم تكون رانك البوت فوق كل الرانكات』
 『!ct <name> / انشاء شات』
 『!cv <name> / انشاء رووم فويس』
+『!dm <name> /يخلي البوت يرسل رساله غي الخاص 』
 『!delet <name> / مسح الشات او الرووم فويس』
 **
   `,`
@@ -190,48 +191,8 @@ client.on('message', async message => {
   }
 });
 
-const weather = require('weather-js');//A7med is one
-client.on('message', message => {
-    let msg = message.content.toUpperCase(); 
-    let cont = message.content.slice(prefix.length).split(" "); 
-    let args = cont.slice(1); 
-    if (msg.startsWith(prefix + 'weather')) { 
 
-        weather.find({search: args.join(" "), degreeType: 'F'}, function(err, result) {
-            if (err) message.channel.send(err);
-
-            
-            if (result.length === 0) {
-                message.channel.send('**Please enter a valid location.**').
-                return; 
-            }
-
-           
-            var current = result[0].current; 
-            var location = result[0].location; 
-
-           
-            const embed = new Discord.RichEmbed()
-.setDescription(`**${current.skytext}**`) 
-                .setAuthor(`Weather for ${current.observationpoint}`) 
-                .setThumbnail(current.imageUrl) 
-                .setColor(0x00AE86) 
-                .addField('Timezone',`UTC${location.timezone}`, true) 
-                .addField('Degree Type',location.degreetype, true)
-                .addField('Temperature',`${current.temperature} Degrees`, true)
-                .addField('Feels Like', `${current.feelslike} Degrees`, true)
-                .addField('Winds',current.winddisplay, true)
-                .addField('Humidity', `${current.humidity}%`, true)
-
-                
-                message.channel.send({embed});
-        });
-    }
-
-});
-
-var antispam = require("anti-spam");//A7MED ONE
- 
+var antispam = require("anti-spam");//A7MED ONE 
 antispam(client, {
   warnBuffer: 3, //الحد الأقصى المسموح به من الرسائل لإرسالها في الفاصل الزمني قبل الحصول على تحذير.
   maxBuffer: 5, // الحد الأقصى المسموح به من الرسائل لإرسالها في الفاصل الزمني قبل الحصول على ميوت.
@@ -1951,7 +1912,7 @@ client.on('message', message => {
  
   .setColor("#FF0000")
   .addField('``سرعة أتصال الــبوت`` ' , `${Date.now() - message.createdTimestamp}` + ' ms`')
-                 .setFooter(` A7med Bot
+                 .setFooter(` Best Bot
  .`, 'https://aladdintravel.com/wp-content/uploads/2014/11/pinterest-logo-2-1074x1067.png')
 
   message.channel.sendEmbed(embed);
@@ -2042,7 +2003,7 @@ client.on('message', msg => {
 
   client.on('message', msg => {//msg
     if (msg.content === 'الوان') {
-      msg.channel.send({file : "https://cdn.pg.sa/1c4R2LijPA.png"})
+      msg.channel.send({file : "https://cdn.pg.sa/Gh8wsG4HpU.jpg"})
     }
   });
 
@@ -2452,7 +2413,7 @@ client.on("guildMemberAdd", member => {
 
 client.on('message', message => {
     if(message.channel.type === 'dm') {
-        var guildID = '533625461083996191'; // <=============== ايدي السيرفر حقك
+        var guildID = '498084738439970817'; // <=============== ايدي السيرفر حقك
         if(message.content.includes('discord.gg/')) {
             var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
             member.ban({ reason: 'ADS In Private.' }).catch();
@@ -2754,7 +2715,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "مسح") {
+    if(command === "clr") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
@@ -2881,7 +2842,7 @@ var heroo = new Discord.RichEmbed()
 client.on('message', message => {
 	var prefix = "!";
 if(!message.channel.guild) return;
-if(message.content.startsWith(prefix + 'اسحب')) {
+if(message.content.startsWith(prefix + 'move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
  if (message.mentions.users.size === 0) {
  return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "move [USER]``")
@@ -3086,7 +3047,7 @@ client.on('message', message =>{
 
 client.on('message', async message => {
   let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "اسكت")) {
+  if(message.content.startsWith(prefix + "mute")) {
     if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -3179,7 +3140,7 @@ client.on('message', async message => {
 let command = message.content.split(" ")[0];
      command = command.slice(prefix.length);
     let args = message.content.split(" ").slice(1);  //kinggamer حقوق الفا كودز و
-if(command === `تكلم`) {2
+if(command === `unmute`) {2
   if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You Donot HavePermission Mute_Members**").then(m => m.delete(5000));
 if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
  
@@ -3267,7 +3228,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "باند") {
+  if (command == "ban") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
   if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
@@ -3306,7 +3267,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "كيك") {
+  if (command == "kick") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
   if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
@@ -3371,7 +3332,7 @@ client.on('message', message => {
     }
 });
 
-client.on('message', omar => {
+client.on('message', a7med => {
 var prefix = "!";
 if(omar.content.split(' ')[0] == prefix + 'dc') {  // delete all channels
 if (!omar.channel.guild) return;
@@ -3387,9 +3348,9 @@ if(!omar.guild.member(omar.author).hasPermission("MANAGE_ROLES_OR_PERMISSIONS"))
 if(!omar.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**I Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
 omar.guild.roles.forEach(m => {
 m.delete();
-});// omar jedol / Codes
+});// a7med / Codes
 omar.reply("`تم حذف جميع الرتب بنجاح`")
-}// omar jedol / Codes
+}// a7med / Codes
 });
 
 client.on('message', message => {
