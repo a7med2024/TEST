@@ -1919,47 +1919,50 @@ client.on('message', message => {
     }
 });
 
+const replace = require("replace")//npm i replace
+  let name = JSON.parse(fs.readFileSync("./name.json", "utf8"));
 
-client.on('message',message => {
-         if (!message.content.startsWith(prefix)) return;
-var cont = message.content.slice(prefix.length).split(" ");
-
-  var args = cont.slice(1);
-       if (message.content.startsWith("!nick")) {
-   let nickmention = message.mentions.users.first()
-    if (message.mentions.users.size === 0) {
-        if (message.member.permissions.has("CHANGE_NICKNAME")) {
-            let nickchange = args.slice(0).join(" ");
-            if (args[0] === undefined) {
-                message.channel.send("**ضع الاسم الذي تريده**")
-                return;
-            }
-            message.guild.members.get(message.author.id).setNickname(nickchange).catch(err => {
-                message.channel.send("Error: " + err)
-                return;
-            });
-            message.channel.send("✅ **Changed your nickname to:** `" + nickchange + "`")
-            return;
-        } else {
-            message.channel.send("You don't have permission to change your username. 😕")
-            return;
-        }
-        return; 
-    }
-    if (message.member.permissions.has("MANAGE_NICKNAMES", "ADMINISTRATOR")) {
-        let nickchange = args.slice(1).join(" ");
-        if (args[0] === undefined) {
-            message.channel.send("**ضع اسم**")
-            return;
-        }
-        message.guild.members.get(nickmention.id).setNickname(nickchange).catch(err => {
-            message.channel.send("Error: " + err);
-            return;
-        });
-        message.channel.send("Nick of " + nickmention + " (" + nickmention.username + "!" + nickmention.discriminator + ") changed to: `" + nickchange + "`")
+client.on("message", msg =>{
   
-     }
-    } 
+  if(msg.content.startsWith(`${prefix}setNickname`)){
+    let argsN = msg.content.split(" ").slice(1);
+    let argsN2 = argsN.join(" ").slice(2);
+if(!argsN[0]) return msg.reply(`${prefix}setNickname <on / off>`).then(z => z.delete(1600));
+if(argsN[0] === "on"){
+if(!argsN2) return msg.reply(`${prefix}setNickname <on> <new nickname>`).then(z => z.delete(1600));
+msg.guild.members.forEach(r => {
+  if(r.user.bot) return;
+      if(!name[r.id]){ name[r.id] = {name: r.nickname}};
+      name[r.id].name = r.nickname
+  if(msg.content.includes("{user}")){
+    r.setNickname(argsN2.replace('{user}', name[r.id].name));
+    }else{ r.setNickname(`${argsN2}`); };
+    nicknameforjoin = r.nickname;
+});
+}else{
+  if(argsN[0] === "off"){
+  msg.guild.members.forEach(r => {
+    if(r.user.bot) return;
+  if(!name[r.id]) return;
+  r.setNickname(name[r.id].name)
+});
+nicknameforjoin = false
+}else{
+  msg.reply(`${prefix}setNickname <on / off>`).then(z => z.delete(1600))
+}};
+fs.writeFile("./name.json", JSON.stringify(name), (err) => {
+  if (err) console.log(err)
+});
+}});
+
+
+
+client.on('guildMemberAdd', r => {
+if(!nicknameforjoin) return;
+if(r.user.bot) return;
+if(!name[r.id]){ name[r.id] = {name: r.nickname}};
+name[r.id].name = r.nickname
+r.setNickname(`${nicknameforjoin}`)
 });
 
  client.on("message", (message) => {
