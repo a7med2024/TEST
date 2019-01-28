@@ -3368,22 +3368,22 @@ client.on('message', message => {
 
 client.on('message', a7med => {
 var prefix = "!";
-if(omar.content.split(' ')[0] == prefix + 'dc') {  // delete all channels
-if (!omar.channel.guild) return;
-if(!omar.guild.member(omar.author).hasPermission("MANAGE_CHANNELS")) return omar.reply("**You Don't Have ` MANAGE_CHANNELS ` Permission**");
-if(!omar.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return omar.reply("**I Don't Have ` MANAGE_CHANNELS ` Permission**");
-omar.guild.channels.forEach(m => {
+if(a7med.content.split(' ')[0] == prefix + 'dc') {  // delete all channels
+if (!a7med.channel.guild) return;
+if(!a7med.guild.member(a7med.author).hasPermission("MANAGE_CHANNELS")) return a7med.reply("**You Don't Have ` MANAGE_CHANNELS ` Permission**");
+if(!a7med.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return a7med.reply("**I Don't Have ` MANAGE_CHANNELS ` Permission**");
+a7med.guild.channels.forEach(m => {
 m.delete();
-});// omar jedol / Codes
-}// omar jedol / Codes
-if(omar.content.split(' ')[0] == prefix + 'dr') { // delete all roles
-if (!omar.channel.guild) return;
-if(!omar.guild.member(omar.author).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**You Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
-if(!omar.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**I Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
-omar.guild.roles.forEach(m => {
+});// a7med
+}// a7med
+if(a7med.content.split(' ')[0] == prefix + 'dr') { // delete all roles
+if (!a7med.channel.guild) return;
+if(!a7med.guild.member(a7med.author).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return a7med.reply("**You Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
+if(!a7med.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return a7med.reply("**I Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
+a7med.guild.roles.forEach(m => {
 m.delete();
 });// a7med / Codes
-omar.reply("`تم حذف جميع الرتب بنجاح`")
+a7med.reply("`تم حذف جميع الرتب بنجاح`")
 }// a7med / Codes
 });
 
