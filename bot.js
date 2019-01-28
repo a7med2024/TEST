@@ -108,6 +108,8 @@ if (message.content === "!help") {
 『!role all <rank> / لأعطاء رتبة للجميع』
 『!role humans <rank> / لأعطاء رتبة للاشخاص فقط』
 『!role bots <rank> / لأعطاء رتبة لجميع البوتات』
+『!warn/عمل تحزير للعضو بروم معين』
+
    `,`
         ***__Music orders__***
 **
@@ -1979,6 +1981,35 @@ r.setNickname(`${nicknameforjoin}`)
                             client.users.get("533140382259871744").send(yumz)
                         }
             });
+
+
+client.on('message',  async  message  =>  {
+  let  user  =  message.mentions.users.first();
+  let  reason  =  message.content.split(' ').slice(2).join(' ');
+if(message.content.startsWith(prefix  +  'warn'))  {
+  message.delete(); //A7MED.....
+  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('**للأسف لا تمتلك صلاحيات' );
+  if(!user)  return  message.channel.send("**  -  mention  a  member  **")/// A7MED TEAM
+  if(!reason)  return  message.channel.send("**  -  Type  Reason  **")//// A7MED TEAM
+  let  reportembed  =  new  Discord.RichEmbed()
+  .setTitle(`**New  Warned User !**`)
+.addField("**-  Warned  User:**",  `[${user}  with  ID  ${user.id}]`)//by  A7MED
+.addField('**-  Warned  By:**',`[${message.author.tag} with id ${message.author.id}]`)/// Mal , Codes /// Galal
+.addField('**-  Reason:**',  `[${reason}]`,  true)
+.addField("**-  Warned  in:**",`[${message.channel.name}]`) /// A7MED TEAM
+.addField("**-  Time & Date:**",`[${message.createdAt}]`) /// A7MED TEAM
+.setFooter("Probot")
+.setColor('#060c37')
+let incidentchannel = message.guild.channels.find(`name`, "warns"); /// A7MED TEAM 
+if(!incidentchannel) return message.channel.send("Can't find warns channel."); /// A7MED TEAM
+incidentchannel.send(reportembed);
+message.reply(`**:warning: ${user} has been warned !:warning:**`).then(msg  =>  msg.delete(3000));
+user.send(`**:warning: You are has been warned in ${message.guild.name} reason: ${reason} :warning:**`) /// CODS A7MED
+}
+
+//A7MED TEAM
+
+})
 
 client.on('message', msg => {
   if(msg.content === '!hide') {
