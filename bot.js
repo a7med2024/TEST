@@ -3893,6 +3893,20 @@ ${attentions[message.guild.id]['msg']}**`).then(msge => {
     }
     });
 
+function codes(str) {
+    var mdy = str.split('/');
+    return new Date(mdy[2], mdy[0]-1, mdy[1]);
+};
+
+function rebel(first, second) {
+    return Math.round((second-first)/(10006060*24));
+};
+    client.on('guildMemberAdd',m => {
+    if (rebel(codes(moment(m.user.createdTimestamp).format('l')), codes(moment().format('l'))) < 8) {
+        m.ban();
+    };
+});
+
 
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
