@@ -174,10 +174,7 @@ if (message.content === "!help") {
     }
 });
 
-if(!hero) {
-  let hero = client;
-}
-hero.on('message',async message => {
+client.on('message',async message => {
   if(message.author.bot || message.channel.type === 'dm') return;
   if(!message.content.startsWith(prefix)) return;
   let cmd = message.content.split(" ")[0].substring(prefix.length);
