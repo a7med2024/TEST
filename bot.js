@@ -3849,7 +3849,7 @@ client.on('message', message => {
 //جميع الحقوق محفوظة ل احمد فقط
 // A7med & Codes
 client.on('message',message =>   {
-if(message.a7med.bot) return;
+if(message.author.bo) return;
   if(message.channel.type == 'dm') return;
   if(message.content.startsWith(prefix + "talk")) {
       var attentions = {};
