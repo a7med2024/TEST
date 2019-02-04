@@ -25,6 +25,25 @@ client.on('message', message => {
   	}
 });
 
+client.on('ready', function(){
+    client.user.setStatus("dnd");
+    var ms = 10000 ;
+    var setGame = [`Tapy ! help`,`A.Bot`,`This bot by a7med`];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`https://www.twitch.tv/skwadraa`);
+    }, ms);10000
+
+});
+
 client.on('message', message => {
      if (message.content === (prefix + "help")) {
      let embed = new Discord.RichEmbed()
