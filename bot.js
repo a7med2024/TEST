@@ -3392,8 +3392,7 @@ client.on('message', async message =>{
           fs.writeFile('./mute.png', P.stringify(bane), (err) => {
 
   
-      }
-    });
+    });//A7MED
 
 client.on('message', async message => {
     let mention = message.mentions.members.first();
