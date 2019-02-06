@@ -3393,7 +3393,7 @@ client.on('message', async message =>{
 
   
       }
-    }); // By a7med
+    });
 
 client.on('message', async message => {
     let mention = message.mentions.members.first();
