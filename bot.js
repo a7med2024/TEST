@@ -3390,7 +3390,7 @@ client.on('message', async message =>{
           message.delete();
 
           fs.writeFile('./mute.png', P.stringify(bane), (err) => {
-
+	  }
   
     });//A7MED
 
