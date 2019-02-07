@@ -20,7 +20,7 @@ client.on('message', message => {
 });
 
 client.on('ready', function(){
-    client.user.setStatus("dnd");
+    client.user.setStatus("idle");
     var ms = 10000 ;
     var setGame = [`Tapy ! help`,`ABot`,`This bot by a7med`];
     var i = -1;
