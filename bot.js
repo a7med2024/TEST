@@ -2589,7 +2589,7 @@ client.on('message', message => {
    if(message.content.split(' ')[0] == 'لون'){
            const embedd = new Discord.RichEmbed()
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-   .setDescription(**There's No Color With This Number ** ❌)
+   .setDescription(**Theres No Color With This Number ** ❌)
    .setColor(ff0000)
 
     if(!isNaN(args) && args.length > 0)
@@ -2723,7 +2723,7 @@ client.on("guildMemberAdd", member => {
 
 client.on('message', message => {
     if(message.channel.type === 'dm') {
-        var guildID = '498084738439970817'; // <=============== ايدي السيرفر حقك
+        var guildID = '548050318144045063'; // <=============== ايدي السيرفر حقك
         if(message.content.includes('discord.gg/')) {
             var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
             member.ban({ reason: 'ADS In Private.' }).catch();
