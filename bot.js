@@ -3243,15 +3243,15 @@ client.on("message", message => {
 
 
 
-const wait= new Set()
-  if (wait.has(message.author.id)) {
+const a= new Set()
+  if (a.has(message.author.id)) {
     return message.reply("**__يجب ان تنظر **10** ثواني لاستخدام **الامر** مرة اخرى__**").then(message => {
      message.delete(10000) 
     })
     }
-    wait.add(message.author.id);
+    a.add(message.author.id);
     setTimeout(() => {
-        wait.delete(message.author.id);
+        a.delete(message.author.id);
     }, 10000);
 
 client.on("message", message => {
