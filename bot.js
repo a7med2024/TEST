@@ -2583,44 +2583,44 @@ client.on('message', message => {
     }
     });
 
-
 client.on('message', message => {
-          let args = message.content.split(' ').slice(1);
-   if(message.content.split(' ')[0] == 'لون'){
-           const embedd = new Discord.RichEmbed()
-     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-   .setDescription(**Theres No Color With This Number ** ❌)
-   .setColor(ff0000)
+            let args = message.content.split(' ').slice(1);
+            if(message.content.split(' ')[0] == لون){
+            const embedd = new Discord.RichEmbed()
+            .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+            .setDescription(**لا يوجد لون بهذا الأسم ** ❌)
+            .setColor(ff0000)
 
-    if(!isNaN(args) && args.length > 0)
-
-
-if    (!(message.guild.roles.find("name",${args}))) return  message.channel.sendEmbed(embedd);
+            if(!isNaN(args) && args.length > 0)
 
 
-       var a = message.guild.roles.find("name",${args})
-                if(!a)return;
-const embed = new Discord.RichEmbed()
+            if    (!(message.guild.roles.find("name",${args}))) return  message.channel.sendEmbed(embedd);
 
-     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-   .setDescription(**Color Changed To Successfully** ✅)
- 
-   .setColor(${a.hexColor})
-  message.channel.sendEmbed(embed);
-          if (!args)return;
-setInterval(function(){})
-                  let count = 0;
-                  let ecount = 0;
-        for(let x = 1; x < 201; x++){
+
+            var a = message.guild.roles.find("name",${args})
+             if(!a)return;
+            const embed = new Discord.RichEmbed()
+
+            .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+            .setDescription(**Done , تم تغير لونك . ✅ **)
+
+            .setColor(${a.hexColor})
+            message.channel.sendEmbed(embed);
+            if (!args)return;
+            setInterval(function(){})
+               let count = 0;
+               let ecount = 0;
+            for(let x = 1; x < 201; x++){
 
             message.member.removeRole(message.guild.roles.find("name",${x}))
 
             }
-                message.member.addRole(message.guild.roles.find("name",${args}));
+             message.member.addRole(message.guild.roles.find("name",${args}));
 
 
-    }
-});
+            }
+            });
+
 
 const sWlc = {}
 client.on('message', message => {
