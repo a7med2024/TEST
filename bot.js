@@ -22,7 +22,7 @@ client.on('message', message => {
 client.on('ready', function(){
     client.user.setStatus("idle");
     var ms = 10000 ;
-    var setGame = [`Tapy ! help`,`ABot`,`This bot by a7med`];
+    var setGame = [`Tapy ! help`,`This bot by a7med`];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -873,7 +873,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 client.on('message', async message => {
 if(message.content.startsWith(prefix + "obc")) {
   let i = client.users.size;
-  if(message.author.id !== '533140382259871744') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
+  if(!message.member.roles.some(r=>["."].includes(r.name)) ) return;
   var args = message.content.split(' ').slice(1).join(' ');
   if(!args) return message.channel.send('❎ » يجب عليك كتابة الرسالة')
   setTimeout(() => {
@@ -910,6 +910,7 @@ const bannedwords = [
      "طيز",
      "طيزك",
      "العاهره",
+      "كل زق",
   ];
 
 client.on('message',  message => {
@@ -3242,16 +3243,15 @@ client.on("message", message => {
 }); //////// A7med codes
 
 
-
-const a= new Set()
-  if (a.has(message.author.id)) {
-    return message.reply("**__يجب ان تنظر **10** ثواني لاستخدام **الامر** مرة اخرى__**").then(message => {
+const wait= new Set()
+  if (wait.has(message.author.id)) {
+    return message.reply("**__يجب ان تنظر 10 ثواني لاستخدام الكود مرة اخرى__**").then(message => {
      message.delete(10000) 
     })
     }
-    a.add(message.author.id);
+    wait.add(message.author.id);
     setTimeout(() => {
-        a.delete(message.author.id);
+        wait.delete(message.author.id);
     }, 10000);
 
 client.on("message", message => {
