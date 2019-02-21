@@ -13,6 +13,13 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('ready' , async => {
+client.user.setGame("Soon.",'https://www.twitch.tv/idk')
+console.log('By A7med')
+
+
+});
+
 client.on('message', message => {
     if (message.content === 'السلام عليكم') {
     	message.reply('وعليكم السلام ورحمه الله وبركاته');
