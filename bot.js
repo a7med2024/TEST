@@ -20,6 +20,17 @@ console.log('By A7med')
 
 });
 
+const wait= new Set()
+  if (wait.has(message.author.id)) {
+    return message.reply("**__يجب ان تنظر 10 ثواني لاستخدام الكود مرة اخرى__**").then(message => {
+     message.delete(10000) 
+    })
+    }
+    wait.add(message.author.id);
+    setTimeout(() => {
+        wait.delete(message.author.id);
+    }, 10000);
+
 client.on('message', message => {
     if (message.content === 'السلام عليكم') {
     	message.reply('وعليكم السلام ورحمه الله وبركاته');
