@@ -3242,18 +3242,6 @@ client.on("message", message => {
   } //////// A7med codes
 }); //////// A7med codes
 
-
-const wait= new Set()
-  if (wait.has(message.author.id)) {
-    return message.reply("**__يجب ان تنظر 10 ثواني لاستخدام الكود مرة اخرى__**").then(message => {
-     message.delete(10000) 
-    })
-    }
-    wait.add(message.author.id);
-    setTimeout(() => {
-        wait.delete(message.author.id);
-    }, 10000);
-
 client.on("message", message => {
     if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
         if(!message.guild.members.get(client.user.id).hasPermission('MANAGE_MESSAGES')) return message.channel.send('**I need Permission \`MANAGE_MESSAGE\`To delete Tokens**')
