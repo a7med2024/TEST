@@ -4042,6 +4042,86 @@ function rebel(first, second) {
 });
 
 
+    client = new Discord.Client({sisableEveryone: true})
+
+    console.log("تم التشغيل,");
+
+client.on('guildMemberAdd', member => {
+
+const mohamed= member.guild.channels.get("548063068140077060");
+
+if(!mohamed) return;
+
+if(mohamed) {
+
+setTimeout(() => mohamed.send(`Soon`), 4000)
+
+}
+
+});
+
+const adminprefix = "!";
+
+client.on('message', message => {
+
+    var argresult = message.content.split(` `).slice(1).join(' ');
+
+      if (!devs.includes(message.author.id)) return;
+
+      
+
+  if (message.content.startsWith(adminprefix + 'pl')) {
+
+    client.user.setGame(argresult);
+
+      message.channel.sendMessage(`**  ${argresult} pl .. ✅**`)
+
+  } else 
+
+  if (message.content.startsWith(adminprefix + 'wt')) {
+
+  client.user.setActivity(argresult, {type:'WATCHING'});
+
+      message.channel.sendMessage(`**  ${argresult} wt .. ✅**`)
+
+  } else 
+
+  if (message.content.startsWith(adminprefix + 'ls')) {
+
+  client.user.setActivity(argresult , {type:'LISTENING'});
+
+      message.channel.sendMessage(`**  ${argresult} ls .. ✅**`)
+
+  } else 
+
+  if (message.content.startsWith(adminprefix + 'st')) {
+
+    client.user.setGame(argresult, "https://www.twitch.tv/muuuuuute");
+
+      message.channel.sendMessage(`**  ${argresult} st .. ✅**`)
+
+    }
+
+  if (message.content.startsWith(adminprefix + 'us')) {
+
+  client.user.setUsername(argresult).then
+
+      message.channel.send(`**us ..**${argresult}** `)
+
+  } else
+
+  if (message.content.startsWith(adminprefix + 'av')) {
+
+  client.user.setAvatar(argresult);
+
+    message.channel.send(`**avatar ... :** `);
+
+  }
+
+  });
+
+
+
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
 //This Bot by a7med//This Bot by a7med//This Bot by a7med
