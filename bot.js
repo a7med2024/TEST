@@ -3195,7 +3195,7 @@ const pics = JSON.parse(fs.readFileSync('./pics.json' , 'utf8'));
   ]
    if (message.attachments.size <= 0) {
     message.delete();
-    message.channel.send(`${message.author}, This Channel For Media 🖼️ Only !`) 
+    message.channel.send(`${message.author},! هذا الروم **للصور** فقط `) 
     .then(msg => {
       setTimeout(() => {
         msg.delete();
@@ -3220,6 +3220,7 @@ const pics = JSON.parse(fs.readFileSync('./pics.json' , 'utf8'));
     }
   }
  })
+
 client.on('message', message => {
   if(message.content.startsWith(prefix + "infopic")) {
 let embed = new Discord.RichEmbed()
