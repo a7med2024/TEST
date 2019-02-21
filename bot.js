@@ -3259,6 +3259,7 @@ client.on("message", message => {
 }
 });
 
+
 client.on("message",function(message) {
 	var prefix = "!";
     if(message.content.startsWith(prefix + 'bot')) {
