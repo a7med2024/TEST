@@ -4042,10 +4042,6 @@ function rebel(first, second) {
 });
 
 
-    client = new Discord.Client({sisableEveryone: true})
-
-    console.log("تم التشغيل,");
-
 client.on('guildMemberAdd', member => {
 
 const mohamed= member.guild.channels.get("548063068140077060");
